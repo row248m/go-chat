@@ -1,0 +1,46 @@
+.baron_wrapper {
+	position: relative;
+	overflow: hidden
+}
+
+.baron_scroller {
+	height: 100%;
+	overflow-y: scroll;
+	z-index: 0
+}
+
+.baron_scroller::-webkit-scrollbar {
+	width: 0
+}
+
+.baron_scroller__bar {
+	position: absolute;
+	z-index: 1;
+	right: 3px;
+	width: 6px;
+	background: #eee;
+	border: 1px solid #dadada;
+	border-radius: 2px
+}
+
+.baron_container {
+	overflow: hidden
+}
+
+.baron_header {
+	height: 36px
+}
+
+.baron_header__title {
+	width: 100%;
+	height: 36px;
+	margin: 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #999
+}
+
+.baron_header__title_state_fixed {
+	position: absolute;
+	z-index: 1
+}

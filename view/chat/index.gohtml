@@ -1,0 +1,30 @@
+{{define "title"}}Chat{{end}}
+{{define "head"}}{{end}}
+{{define "content"}}
+    <div class="container">
+        <div class="chat-container">
+            <div class="user-list-online">
+                <ul></ul>
+            </div>
+            <div class="messages-block">
+                <div class="messages-block-container">
+                    <div class="message-list"></div>
+                </div>
+                <div class="send-new-message-block">
+                    <textarea placeholder="Type your message.."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+{{end}}
+
+{{define "foot"}}{{end}}
+
+{{define "script"}}
+    $(document).ready(function(){
+        Current.userId = {{.UserID}}
+
+        window.chat = new ChatJS();
+        window.chat.init();
+    })
+{{end}}

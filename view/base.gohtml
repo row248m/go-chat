@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>{{template "title" .}}</title>
+
+{{CSS "static/css/style.css" "all"}}
+
+{{template "head" .}}
+</head>
+<body>
+
+{{template "content" .}}
+
+{{JS "static/js/lodash.min.js"}}
+{{JS "static/js/mustache.min.js"}}
+{{JS "static/js/jquery.min.js"}}
+{{JS "static/js/lodash.min.js"}}
+{{JS "static/js/dateformat.js"}}
+{{JS "static/js/templates.js"}}
+{{JS "static/js/all.js"}}
+
+<script>
+    {{template "script" .}}
+</script>
+
+{{template "foot" .}}
+</body>
+</html>
