@@ -111,9 +111,15 @@ func generateAvatarIfNeeded(w http.ResponseWriter, r *http.Request) {
 	c := flight.Context(w, r)
 
 	userId := c.Sess.Values["UserID"].(string)
-	avatarPath := "asset/static/avatar/" + userId + ".jpg"
+	folderPath := "asset/static/avatar"
+	avatarPath := folderPath + "/" + userId + ".jpg"
 
-	_, err := os.Stat(avatarPath)
+	_, err := os.Stat(folderPath)
+	if os.IsNotExist(err) {
+		os.Mkdir(folderPath, os.ModeDir)
+	}
+
+	_, err = os.Stat(avatarPath)
 	if os.IsNotExist(err) {
 		// Generate avatar
 		// @todo: random FEMALE or MALE
