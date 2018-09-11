@@ -7,9 +7,16 @@ var child       = require('child_process');
 var util        = require('gulp-util');
 var path        = require('path');
 var os          = require('os');
+var yargs       = require('yargs');
 
 // Enviroment variables
-var env = JSON.parse(fs.readFileSync('./env.json'))
+if (yargs.argv.production) {
+    var env = JSON.parse(fs.readFileSync('./config-prod.json'));
+}
+else {
+    var env = JSON.parse(fs.readFileSync('./config-dev.json'));
+}
+
 var folderAsset = env.Asset.Folder;
 
 // Application server

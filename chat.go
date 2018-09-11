@@ -3,6 +3,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"runtime"
 
 	"row248/chat/lib/boot"
@@ -25,9 +26,18 @@ func init() {
 // middleware to the router, and then starts the HTTP and HTTPS listeners.
 func main() {
 	// Load the configuration file
-	config, err := env.LoadConfig("env.json")
+	config, err := env.LoadConfig("config-dev.json")
 	if err != nil {
 		log.Fatalln(err)
+	}
+
+	_, err = os.Stat("config-prod.json")
+	if !os.IsNotExist(err) {
+		config, err = env.AppendConfig(config, "config-prod.json")
+
+		if err != nil {
+			log.Fatalln(err)
+		}
 	}
 
 	// Register the services

@@ -43,21 +43,20 @@ func (c *Info) ParseJSON(b []byte) error {
 	return json.Unmarshal(b, &c)
 }
 
-// New returns a instance of the application settings.
-func New(path string) *Info {
-	return &Info{
-		path: path,
-	}
-}
-
 // LoadConfig reads the configuration file.
 func LoadConfig(configFile string) (*Info, error) {
 	// Create a new configuration with the path to the file
-	config := New(configFile)
+	config := &Info{}
 
 	// Load the configuration file
 	err := jsonconfig.Load(configFile, config)
 
 	// Return the configuration
+	return config, err
+}
+
+func AppendConfig(config *Info, configFile string) (*Info, error) {
+	err := jsonconfig.Load(configFile, config)
+
 	return config, err
 }

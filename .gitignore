@@ -2,3 +2,4 @@
 asset/static
 node_modules
 chat.exe
+config-prod.json
