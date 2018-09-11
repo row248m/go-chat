@@ -1,6 +1,7 @@
 package chat
 
 import (
+	"math/rand"
 	"net/http"
 
 	"row248/chat/lib/flight"
@@ -122,7 +123,11 @@ func generateAvatarIfNeeded(w http.ResponseWriter, r *http.Request) {
 	_, err = os.Stat(avatarPath)
 	if os.IsNotExist(err) {
 		// Generate avatar
-		// @todo: random FEMALE or MALE
-		govatar.GenerateFile(govatar.FEMALE, avatarPath)
+		gender := govatar.MALE
+		if rand.Intn(1) > 0 {
+			gender = govatar.FEMALE
+		}
+
+		govatar.GenerateFile(gender, avatarPath)
 	}
 }
